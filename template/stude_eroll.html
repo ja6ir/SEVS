@@ -1,0 +1,108 @@
+{% extends "stud_home.html" %}
+{% block content %}
+
+    <!--/inner-page-->
+    <div class="inner-banner py-5">
+        <section class="w3l-breadcrumb text-left py-sm-5 ">
+            <div class="container">
+                <div class="w3breadcrumb-gids">
+                    <div class="w3breadcrumb-left text-left">
+                        <h2 class="inner-w3-title mt-sm-5 mt-4">
+                            E-Roll</h2>
+                    </div>
+                    <div class="w3breadcrumb-right">
+                        <ul class="breadcrumbs-custom-path">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active"><span class="fas fa-angle-double-right mx-2">E-Roll</span> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{%if data%}
+        <!--/team-sec-->
+        <section class="w3l-team-main team py-5" id="team">
+            <div class="container py-lg-5">
+                <div class="title-content text-center mb-2">
+                    <!-- <h6 class="title-subw3hny mb-1">Faculty uploaded</h6> -->
+                    <h3 class="title-w3l">E-Rolls</h3>
+                </div>
+                <div class="row team-row justify-content-center">
+    {%for d in data%}
+                    <div class="col-lg-4 col-6 team-wrap mt-lg-5 mt-4">
+                        <div class="team-member text-center">
+                            <div class="team-img">
+                                <a href="{{d.file}}" target="_blank">
+                                    <img src="static/media/pdf.png" alt="" class="radius-image">
+                                </a>
+                                <div class="overlay-team">
+                                    <div class="team-details text-center">
+                                        <div class="socials mt-20">
+                                            <a href="{{d.file}}" download>
+                                                <span class="material-symbols-outlined" style="font-size: 20px;">download</span>
+                                            </a>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#url" class="team-title">{{d.faculty.name}}</a>
+                            <p>Uploaded on : {{d.date}}</p>
+                            <p>Department : {{d.faculty.dptmnt.department}}</p>
+
+                            <p>Election :{{d.election.title}}</p>
+                        </div>
+                    </div>
+    {%endfor%}
+                </div>
+            </div>
+        </section>
+        <!--//team-sec-->
+    
+        {%if today > lastDate%}
+        <h3>Objection raising date has expired</h3>
+        {%else%}
+    <!-- contact-form -->
+    <section class="w3l-contact-main" id="contact">
+        <div class="contact-infhny py-5 pb-0">
+            <div class="container py-lg-3 pb-0">
+                <div class="top-map">
+                    <div class="map-content-9">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-top1">
+                                <div class="w3header-section text-center">
+                                    <h6 class="title-subw3hny">Raise an objection!!</h6>
+                                    <!-- <h3 class="title-w3l mb-0">
+                                        Fill the form and send your query</h3>
+                                    <p class="mb-lg-5 mb-4 text-center">We have made it easy for clients to reach us and
+                                        get
+                                        their solutions
+                                        weaved</p> -->
+                                </div>
+
+                                <div class="form-top">
+                                    <div class="form-top-righ">
+                                        <textarea name="objection" id="w3lMessage" placeholder="Description*" required=""></textarea>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="text-lg-right text-center">
+                                    <button type="submit" class="btn btn-style btn-primary">Add <i class="fas fa-paper-plane ms-2"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //contact-form -->
+    {%endif%}
+{%else%}
+<h3>Currently no E-Rolls</h3>
+{%endif%}
+
+{% endblock %}

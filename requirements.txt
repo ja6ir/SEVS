@@ -1,0 +1,7 @@
+django
+reportlab
+qrcode
+pytz
+pynacl
+phe
+pycryptodome

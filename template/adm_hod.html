@@ -1,0 +1,108 @@
+{% extends "admin_home.html" %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!--/inner-page-->
+    <div class="inner-banner py-5">
+        <section class="w3l-breadcrumb text-left py-sm-5 ">
+            <div class="container">
+                <div class="w3breadcrumb-gids">
+                    <div class="w3breadcrumb-left text-left">
+                        <h2 class="inner-w3-title mt-sm-5 mt-4">
+                            HOD</h2>
+                    </div>
+                    <div class="w3breadcrumb-right">
+                        <ul class="breadcrumbs-custom-path">
+                            <li><a href="admin_home.html">Home</a></li>
+                            <li class="active"><span class="fas fa-angle-double-right mx-2">HOD</span> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- contact-form -->
+    <section class="w3l-contact-main" id="contact">
+        <div class="contact-infhny py-5 pb-0">
+            <div class="container py-lg-3 pb-0">
+                <div class="top-map">
+                    <div class="map-content-9">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-top1">
+                                <div class="w3header-section text-center">
+                                    <h6 class="title-subw3hny">Add HODs here</h6>
+                                    <!-- <h3 class="title-w3l mb-0">
+                                        Fill the form and send your query</h3>
+                                    <p class="mb-lg-5 mb-4 text-center">We have made it easy for clients to reach us and
+                                        get
+                                        their solutions
+                                        weaved</p> -->
+                                </div>
+
+                                <div class="form-top">
+                                    <div class="form-top-left">
+                                        <input type="text" name="fname" id="fname" placeholder="First name*" pattern="[A-Za-z]+" title="Please enter a valid first name" required>
+                                        <input type="text" name="lname" id="lname" placeholder="Last name*" pattern="[A-Za-z]+" title="Please enter a valid last name" required>
+                                        <input type="email" name="email" id="w3lSender" placeholder="Email*" required="">
+                                        <input type="tel" name="contact" id="w3lName" placeholder="Contact*" pattern="[0-9]{10}" title="Please enter a 10-digit contact number" required>
+                                    </div>
+                                    <div class="form-top-righ">
+                                        <textarea name="address" id="w3lMessage" placeholder="Address*" required=""></textarea>
+                                    </div>
+                                    <div class="form-top-righ">
+                                        <select name="department" id="">
+                                            {%for d in data%}
+                                            <option value="{{d.id}}">{{d.department}}</option>
+                                            {%endfor%}
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="text-lg-right text-center">
+                                    <button type="submit" class="btn btn-style btn-primary">Add <i class="fas fa-paper-plane ms-2"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //contact-form -->
+
+    <!--/feature-section-->
+    <section class="w3l-aboutblock1" id="services1">
+        <div class="midd-w3 py-5">
+            <div class="container py-lg-5 py-md-4 py-2">
+                <div class="title-content text-center">
+                    <h6 class="title-subw3hny mb-1"></h6>
+                    <h3 class="title-w3l">HODs</h3>
+                </div>
+                <div class="row justify-content-center">
+                {%for d in hods%}
+                    <div class="col-lg-4 col-md-6 grids-feature mt-md-5 mt-4">
+                        <div class="area-box">
+                            <i class="fas fa-archway" aria-hidden="true"></i>
+                            <div class="area-box-info">
+                                <h4><a href="#feature" class="title-head">{{d.usr_con.first_name}} {{d.usr_con.last_name}}</a></h4>
+                                <p>{{d.dptmnt.department}}</p>
+                                <form method="post" action="">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="hod_id" value="{{ d.id }}">
+                                    <button type="submit" name="delete_hod" class="btn btn- btn-sm">
+                                        <i class="fas fa-trash"></i> <!-- Font Awesome trash icon -->
+                                    </button>                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {%endfor%}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//feature-section-->
+
+{% endblock %}

@@ -1,0 +1,139 @@
+{% extends "admin_home.html" %}
+{% block content %}
+
+    <!--/inner-page-->
+    <div class="inner-banner py-5">
+        <section class="w3l-breadcrumb text-left py-sm-5 ">
+            <div class="container">
+                <div class="w3breadcrumb-gids">
+                    <div class="w3breadcrumb-left text-left">
+                        <h2 class="inner-w3-title mt-sm-5 mt-4">
+                            Election</h2>
+                    </div>
+                    <div class="w3breadcrumb-right">
+                        <ul class="breadcrumbs-custom-path">
+                            <li><a href="admin_home.html">Home</a></li>
+                            <li class="active"><span class="fas fa-angle-double-right mx-2">Election</span> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- contact-form -->
+    <section class="w3l-contact-main" id="contact">
+        <div class="contact-infhny py-5 pb-0">
+            <div class="container py-lg-3 pb-0">
+                <div class="top-map">
+                    <div class="map-content-9">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-top1">
+                                <div class="w3header-section text-center">
+                                    <h6 class="title-subw3hny">Add Election here</h6>
+                                    <!-- <h3 class="title-w3l mb-0">
+                                        Fill the form and send your query</h3>
+                                    <p class="mb-lg-5 mb-4 text-center">We have made it easy for clients to reach us and
+                                        get
+                                        their solutions
+                                        weaved</p> -->
+                                </div>
+
+                                <div class="form-top">
+                                    <div class="form-top-righ">
+                                        <input type="text" name="title" id="w3lName" placeholder="Election title*" required="">
+                                    </div>
+                                    <label for="t1">Election date</label>
+                                    <div class="form-top-righ">
+                                        <input type="date" name="election_date" id="t1" required="">
+                                    </div>
+                                    <label for="t1">E-Roll date</label>
+                                    <div class="form-top-righ">
+                                        <input type="date" name="eroll_date" id="t1" required="">
+                                    </div>
+                                    <label for="t1">Objections last date</label>
+                                    <div class="form-top-righ">
+                                        <input type="date" name="obj_date" id="t1" required="">
+                                    </div>
+                                    <label for="t1">Nomination accept start date</label>
+                                    <div class="form-top-righ">
+                                        <input type="date" name="nomi_Sdate" id="t1" required="">
+                                    </div>
+                                    <label for="t1">Nomination accept end date</label>
+                                    <div class="form-top-righ">
+                                        <input type="date" name="nomi_Edate" id="t1" required="">
+                                    </div>
+                                    <label for="t1">Nomination withdraw last date</label>
+                                    <div class="form-top-righ">
+                                        <input type="date" name="nomiwithraw_Ldate" id="t1" required="">
+                                    </div>
+                                    <label for="t1">Campaign start date</label>
+                                    <div class="form-top-righ">
+                                        <input type="date" name="camp_Sdate" id="t1" required="">
+                                    </div>
+                                    <label for="t1">Campaign end date</label>
+                                    <div class="form-top-righ">
+                                        <input type="date" name="camp_Edate" id="t1" required="">
+                                    </div>
+                                    <label for="t1">Result publishing date</label>
+                                    <div class="form-top-righ">
+                                        <input type="date" name="result_date" id="t1" required="">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="text-lg-right text-center">
+                                    <button type="submit" class="btn btn-style btn-primary">Add <i class="fas fa-paper-plane ms-2"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //contact-form -->
+
+    <!--/feature-section-->
+    <section class="w3l-aboutblock1" id="services1">
+        <div class="midd-w3 py-5">
+            <div class="container py-lg-5 py-md-4 py-2">
+                <div class="title-content text-center">
+                    <h6 class="title-subw3hny mb-1"></h6>
+                    <h3 class="title-w3l">Elections</h3>
+                </div>
+                <div class="row justify-content-center">
+                {%for d in data%}
+                    <div class="col-lg-6 col-md-6 grids-feature mt-md-5 mt-4">
+                        <div class="area-box">
+                            <i class="fas fa-archway" aria-hidden="true"></i>
+                            <div class="area-box-info">
+                                <h4><a href="#feature" class="title-head">{{d.title}}</a></h4>
+                                <p>Added date : {{d.date}}</p>
+                                <p>Election date : {{d.election_date}}</p>
+                                <p>E-Roll date : {{d.erollAddDate}}</p>
+                                <p>Objections last date : {{d.objectionAcceptDate}}</p>
+                                <p>Nomination accept start date : {{d.nomination_StartDate}}</p>
+                                <p>Nomination accept end date : {{d.nomination_LastDate}}</p>
+                                <p>Nomination withdraw last date : {{d.nomiWithdrawDate}}</p>
+                                <p>Campaign start date : {{d.campaignDate}}</p>
+                                <p>Campaign end date : {{d.campaignEndDate}}</p>
+                                <p>Result publishing date : {{d.resultPublishingDate}}</p>
+                                {% if d.status == "Upcoming"%}
+                                    <a href="adm_liveElec?id={{d.id}}" class="btn btn-primary">Live</a>
+                                {%elif d.status == "Live"%}
+                                    <a href="adm_completeElec?id={{d.id}}" class="btn btn-danger">Mark as Completed</a>
+                                {%elif d.status == "Completed"%}
+                                    <p></p>
+                                {%endif%}
+                            </div>
+                        </div>
+                    </div>
+                {%endfor%}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//feature-section-->
+
+{% endblock %}

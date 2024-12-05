@@ -1,0 +1,287 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SEVS</title>
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="static/assets/css/style-starter.css">
+</head>
+
+<body>
+    <!--/Header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light stroke py-lg-0">
+                <h1><a class="navbar-brand" href="index.html">
+                    <span class="sub-color">SEVS</span> FOR JB
+                </a></h1>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav mx-lg-auto my-2 my-lg-0 navbar-nav-scroll">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="result">Result</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#footer">Contact</a>
+                        </li>
+                    </ul>
+                    <!--/search-->
+                    <!-- <button id="trigger-overlay" class="searchw3-icon me-xl-4 me-lg-3" type="button"><i class="fas fa-search"></i></button> -->
+                    <!-- open/close -->
+                    <!-- <div class="overlay overlay-slidedown">
+                        <button type="button" class="overlay-close"><i class="fas fa-times"></i></button>
+                        <nav class="w3l-formhny">
+                            <form action="#" method="GET" class="d-sm-flex search-header">
+                                <input class="form-control me-2" type="search" placeholder="Search here..." aria-label="Search" required>
+                                <button class="btn btn-style btn-secondary me-lg-3" type="submit">Search</button>
+                            </form>
+                        </nav>
+                    </div> -->
+                    <!--//search-->
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="mobile-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//Header-->
+    {% block content %}
+
+    <!--/inner-page-->
+    <div class="inner-banner py-5">
+        <section class="w3l-breadcrumb text-left py-sm-5 ">
+            <div class="container">
+                <div class="w3breadcrumb-gids">
+                    <div class="w3breadcrumb-left text-left">
+                        <h2 class="inner-w3-title mt-sm-5 mt-4">
+                            Progress</h2>
+                    </div>
+                    <div class="w3breadcrumb-right">
+                        <ul class="breadcrumbs-custom-path">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active"><span class="fas fa-angle-double-right mx-2"></span> Progress</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+    <!--//inner-page-->
+    <!--/progress-->
+    <section class="w3l-servicesblock w3l-servicesblock1 py-5" id="progress">
+        <div class="container py-lg-5 py-md-4 py-2">
+            <div class="row">
+                <div class="col-lg-6 align-self pe-lg-4">
+
+                    {%for d in nominations%}
+
+                    <div class="progress-info info1">
+                        <h6 class="progress-tittle">{{d.student.usr_con.first_name}} {{d.student.usr_con.last_name}} <span class="">{{d.noOfVotes}} %  &nbsp;&nbsp;{{d.noOfVotesNo}}/{{count}}</span></h6>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped" role="progressbar" id="myElement" style="width:{{d.noOfVotes}}%" aria-valuenow="3" aria-valuemin="0" aria-valuemax="{{count}}">
+                            </div>
+                        </div>
+                    </div>
+                    {%endfor%}
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//progress-->
+    
+    {% endblock %}
+
+    <footer class="w3l-footer9" id="footer">
+        <section class="footer-inner-main py-5">
+            <div class="container py-md-3">
+                <div class="right-side">
+                    <div class="row footer-hny-grids sub-columns">
+                        <div class="col-lg-3 sub-one-left">
+                            <h6>About </h6>
+                            <p class="footer-phny pe-lg-5">SEVS for JB is a secure electronic voting platform designed for JaiBharath College elections. We ensure privacy, accuracy, and transparency through cutting-edge encryption, voter authentication, and end-to-end verification, all while adhering to the university's election protocols. Our system guarantees secure, auditable, and trustworthy elections for the student body.</p>
+                            <div class="columns-2 mt-lg-5 mt-4">
+                                
+                            </div>
+                        </div>
+                        <div class="col-lg-3 sub-two-right">
+                            <h6>Services</h6>
+                            <ul>
+                                <li><a href="/login"><i class="fas fa-angle-right"></i> Creating Election</a>
+                                </li>
+                                <li><a href="/login"><i class="fas fa-angle-right"></i> Maintaining Hods and Faculties</a>
+                                </li>
+                                <li><a href="/login"><i class="fas fa-angle-right"></i> Adding Students</a>
+                                </li>
+                                <li><a href="/login"><i class="fas fa-angle-right"></i> E - Roll Publication</a>
+                                </li>
+                                <li><a href="/login"><i class="fas fa-angle-right"></i> Voting</a></li>
+
+
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 sub-two-right">
+                            <h6>Our Links</h6>
+                            <ul class="social">
+                                <li><a href="#facebook"><span class="fab fa-facebook-f"></span></a>
+                                </li>
+                                <li><a href="#linkedin"><span class="fab fa-linkedin-in"></span></a>
+                                </li>
+                                <li><a href="#twitter"><span class="fab fa-twitter"></span></a>
+                                </li>
+                                <li><a href="#google"><span class="fab fa-google-plus-g"></span></a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 sub-one-left">
+                            <h6>Terms </h6>
+                            <div class="row fposts-grid-inner mb-4">
+                                
+                                <div class="col-8 fposts-grid-right">
+                                    <p>
+                                        All voter information is kept confidential and handled in accordance with relevant data privacy laws. In case of any disputes, the decision of the Electoral Officer is final and binding.</a>
+                                    </p>
+                                   
+                                </div>
+                            </div>
+                            
+                            
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="below-section mt-5">
+                    <div class="copyright-footer">
+                        <div class="columns text-left">
+                            <p>© SEVS</a></p>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            <span class="fas fa-level-up-alt" aria-hidden="true"></span>
+        </button>
+        <script>
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function() {
+                scrollFunction()
+            };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("movetop").style.display = "block";
+                } else {
+                    document.getElementById("movetop").style.display = "none";
+                }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+
+        </script>
+        <!-- //move top -->
+    </footer>
+    <!--//footer-9 -->
+    <!-- Template JavaScript -->
+    <script src="static/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="static/assets/js/theme-change.js"></script>
+    <!--/search-->
+    <script src="static/assets/js/modernizr.custom.js"></script>
+    <script src="static/assets/js/classie.js"></script>
+    <script src="static/assets/js/demo1.js"></script>
+    <!--//search-->
+    <!-- MENU-JS -->
+    <script>
+        $(window).on("scroll", function() {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function() {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function() {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });
+
+    </script>
+    <!-- //MENU-JS -->
+
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+        $(function() {
+            $('.navbar-toggler').click(function() {
+                $('body').toggleClass('noscroll');
+            })
+        });
+
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!-- //bootstrap -->
+    <script src="static/assets/js/bootstrap.min.js"></script>
+
+{% if messages %}
+{% for msg in messages %}
+<script>alert("{{msg}}")</script>
+{% endfor %}
+{% endif %}
+
+</body>
+
+</html>

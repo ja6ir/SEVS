@@ -1,0 +1,53 @@
+{% extends "admin_home.html" %}
+{% block content %}
+
+    <!--/inner-page-->
+    <div class="inner-banner py-5">
+        <section class="w3l-breadcrumb text-left py-sm-5 ">
+            <div class="container">
+                <div class="w3breadcrumb-gids">
+                    <div class="w3breadcrumb-left text-left">
+                        <h2 class="inner-w3-title mt-sm-5 mt-4">
+                            Objections</h2>
+                    </div>
+                    <div class="w3breadcrumb-right">
+                        <ul class="breadcrumbs-custom-path">
+                            <li><a href="admin_home.html">Home</a></li>
+                            <li class="active"><span class="fas fa-angle-double-right mx-2">Objections</span> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!--/feature-section-->
+    <section class="w3l-aboutblock1" id="services1">
+        <div class="midd-w3 py-5">
+            <div class="container py-lg-5 py-md-4 py-2">
+                <div class="title-content text-center">
+                    <h6 class="title-subw3hny mb-1"></h6>
+                    <h3 class="title-w3l">Objections</h3>
+                </div>
+                <div class="row justify-content-center">
+                {%for d in data%}
+                    <div class="col-lg-4 col-md-6 grids-feature mt-md-5 mt-4">
+                        <div class="area-box">
+                            <i class="fas fa-archway" aria-hidden="true"></i>
+                            <div class="area-box-info">
+                                <h4><a href="#feature" class="title-head">{{d.student.usr_con.first_name}} {{d.student.usr_con.last_name}}</a></h4>
+                                <p>{{d.description}}</p>
+                                <p>Department : {{d.student.dptmnt.department}}</p>
+                                <p>{{d.date}}</p>
+                            </div>
+                        </div>
+                    </div>
+                {%endfor%}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//feature-section-->
+
+{% endblock %}

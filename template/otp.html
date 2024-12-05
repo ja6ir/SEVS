@@ -1,0 +1,60 @@
+{% extends "admin_home.html" %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!--/inner-page-->
+    <div class="inner-banner py-5">
+        <section class="w3l-breadcrumb text-left py-sm-5 ">
+            <div class="container">
+                <div class="w3breadcrumb-gids">
+                    <div class="w3breadcrumb-left text-left">
+                        <h2 class="inner-w3-title mt-sm-5 mt-4">
+                            HOD</h2>
+                    </div>
+                    <div class="w3breadcrumb-right">
+                        <ul class="breadcrumbs-custom-path">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active"><span class="fas fa-angle-double-right mx-2">HOD</span> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- contact-form -->
+    <section class="w3l-contact-main" id="contact">
+        <div class="contact-infhny py-5 pb-0">
+            <div class="container py-lg-3 pb-0">
+                <div class="top-map">
+                    <div class="map-content-9">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-top1">
+                                <div class="w3header-section text-center">
+                                    <h6 class="title-subw3hny">Add HODs here</h6>
+                            
+                                </div>
+
+                                <div class="form-top">
+                                    <div class="form-top-left">
+                                       
+                                        <input type="number" name="otp" id="w3lName" placeholder="OTP*" required="">
+                                    </div>
+                                          
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="text-lg-right text-center">
+                                    <button type="submit" class="btn btn-style btn-primary">Add <i class="fas fa-paper-plane ms-2"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //contact-form -->
+    {% endblock %}

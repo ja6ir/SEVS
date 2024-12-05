@@ -1,0 +1,58 @@
+{% extends "admin_home.html" %}
+{% block content %}
+{% load static %}
+
+<div class="inner-banner py-5">
+    <section class="w3l-breadcrumb text-left py-sm-5">
+        <div class="container">
+            <div class="w3breadcrumb-gids">
+                <div class="w3breadcrumb-left text-left">
+                    <h2 class="inner-w3-title mt-sm-5 mt-4">E-Roll</h2>
+                </div>
+                <div class="w3breadcrumb-right">
+                    <ul class="breadcrumbs-custom-path">
+                        <li><a href="admin_home.html">Home</a></li>
+                        <li class="active"><span class="fas fa-angle-double-right mx-2">E-Roll</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<section class="w3l-team-main team py-5" id="team">
+    <div class="container py-lg-5">
+        <div class="title-content text-center mb-2">
+            <h3 class="title-w3l">Paper Trails</h3>
+        </div>
+        <div class="row team-row justify-content-center">
+            {% for d in data %}
+                <div class="col-lg-4 col-6 team-wrap mt-lg-5 mt-4">
+                    <div class="team-member text-center">
+                        <div class="team-img">
+                            <a href="{{ d.file }}" target="_blank">
+                                <img src="{% static 'media/pdf.png' %}" alt="" class="radius-image">
+                            </a>
+                            <div class="overlay-team">
+                                <div class="team-details text-center">
+                                    <div class="socials mt-20">
+                                        <a href="{{ d.file }}" download>
+                                            <span class="material-symbols-outlined" style="font-size: 20px;">download</span>
+                                        </a>
+                                        <a href="hod_approveEroll?id={{ d.filename }}&action=adm_reject">
+                                            <span class="material-symbols-outlined">delete</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#url" class="team-title">Filename: {{ d.filename }}</a>
+                        <p>Uploaded on: {{ d.date }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

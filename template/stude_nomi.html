@@ -1,0 +1,145 @@
+{% extends "stud_home.html" %}
+{% block content %}
+
+    <!--/inner-page-->
+    <div class="inner-banner py-5">
+        <section class="w3l-breadcrumb text-left py-sm-5 ">
+            <div class="container">
+                <div class="w3breadcrumb-gids">
+                    <div class="w3breadcrumb-left text-left">
+                        <h2 class="inner-w3-title mt-sm-5 mt-4">
+                            Nomination</h2>
+                    </div>
+                    <div class="w3breadcrumb-right">
+                        <ul class="breadcrumbs-custom-path">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active"><span class="fas fa-angle-double-right mx-2">Nomination</span> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{%if today <= lastDate and today >= startDate%}
+    
+
+
+    <!-- contact-form -->
+    <section class="w3l-contact-main" id="contact">
+        <div class="contact-infhny py-5 pb-0">
+            <div class="container py-lg-3 pb-0">
+                <div class="top-map">
+                    <div class="map-content-9">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-top1">
+                                <div class="w3header-section text-center">
+                                    <h6 class="title-subw3hny">Nomination form</h6>
+                                </div>
+                                <div class="form-top">
+                                    <div class="form-top-left">
+                                        <select name="attendance" id="">
+                                            <option value="yes" selected disabled>Attendance more than 75%</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        <select name="sem" id="">
+                                            <option value="yes" selected disabled>All sem cleared</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        <select name="criminalcase" id="">
+                                            <option value="yes" selected disabled>Criminal cases</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        <select name="university" id="">
+                                            <option value="yes" selected disabled>University disciplinary actions</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        <select name="ugpg" id="">
+                                            <option value="ug">UG</option>
+                                            <option value="pg">PG</option>
+                                        </select>
+                                        <input type="number" name="age" placeholder="Age*" required="">
+                                        <input type="email" name="proposer" placeholder="Proposers email id*" required="">
+                                        <input type="email" name="seconder" id="w3lName" placeholder="Seconders email id*" required="">
+                                    </div>
+                                    <div class="form-top-righ">
+                                        <label for="id2">Profile Picture</label>
+                                        <input type="file" name="file" id="id2" placeholder="Age*" required="">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="text-lg-right text-center">
+                                    <button type="submit" class="btn btn-style btn-primary">Add <i class="fas fa-paper-plane ms-2"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //contact-form -->
+
+
+
+{%else%}
+<h3 class="text-center">Currently no nomination accepted</h3>
+{%endif%}
+
+
+    <!--/team-sec-->
+    <section class="w3l-team-main team py-5" id="team">
+        <div class="container py-lg-5">
+            <div class="title-content text-center mb-2">
+                <h6 class="title-subw3hny mb-1"></h6>
+                <h3 class="title-w3l">My nomination</h3>
+            </div>
+            <div class="row team-row justify-content-center">
+{%for d in data%}
+                <div class="col-lg-4 col-6 team-wrap mt-lg-5 mt-4">
+                    <div class="team-member text-center">
+                        <div class="team-img">
+                            <a href="static/media/{{d.file}}" target="_blank">
+                                <img src="static/media/{{d.file}}" alt="" class="radius-image">
+                            </a>
+                            <div class="overlay-team">
+                                <div class="team-details text-center">
+                                    <div class="socials mt-20">
+                                        <a href="static/media/{{d.file}}" download>
+                                            <span class="material-symbols-outlined" style="font-size: 20px;">download</span>
+                                        </a>
+                                        <!-- <a href="fac_approvNomi?id={{d.id}}&action=approve">
+                                            <span class="material-symbols-outlined">
+                                                done
+                                                </span>
+                                        </a> -->
+                                        {%if today <= withdraw%}
+                                        <a href="fac_approvNomi?id={{d.id}}&action=studWithdraw" title="Withdraw your nomination">
+                                            <span class="material-symbols-outlined">
+                                                delete
+                                                </span>
+                                        </a>
+                                        {%endif%}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#url" class="team-title">{{d.student.usr_con.first_name}} {{d.student.usr_con.last_name}}</a>
+                        <p>Uploaded on : {{d.date}}</p>
+                        <p>Faculty : {{d.fac_status}}</p>
+                        <p>HOD : {{d.hod_status}}</p>
+                        <p>Admin : {{d.admin_status}}</p>
+                    </div>
+                </div>
+{%endfor%}
+            </div>
+        </div>
+    </section>
+    <!--//team-sec-->
+
+{% endblock %}
