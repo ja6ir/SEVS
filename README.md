@@ -4,6 +4,7 @@
 
 SEVS (Secure Electronic Voting System) is a Django-based web application designed to manage and conduct secure college elections. The system ensures transparency, integrity, and confidentiality throughout the voting process. It employs state-of-the-art cryptographic techniques and features a hierarchical role-based structure for managing duties across various election participants.
 
+This was a project I have done during my college
 ---
 
 ## Features
@@ -24,7 +25,7 @@ The system is structured to support various roles involved in the election proce
 
 ### 1. **Election Officer**
    - Full administrative control over the entire election process.
-   - Responsibilities include setting up elections, managing candidates, and generating reports.
+   - Responsibilities include setting up elections, managing candidates, managing reports.
    - Can view, edit, and manage all election data.
 
 ### 2. **HOD (Head of Department)**
@@ -33,11 +34,17 @@ The system is structured to support various roles involved in the election proce
    - Can view voting results and reports for their department.
 
 ### 3. **Faculty**
-   - Can participate in elections (as voters) and view results.
-   - Can manage candidate nominations for specific departments or elections if allowed by the Election Officer.
+   - Can manage election-related tasks for their respective class.
+   - Generate Election Rolls
+   - Add students
+  
 
 ### 4. **Student**
-   - Can register and vote for candidates in the elections.
+   - Can login with thier credintials received on their mail.
+   - Submit Nominations and Objections
+   - View election rolls
+   - View candiates
+   - Vote for candidates in the elections.
    - View election results (only the results they are eligible to see based on their department and position).
 
 ---
