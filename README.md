@@ -1,5 +1,5 @@
 
-# SEVS - Secure Electronic Voting System for College Elections
+# SEVS - Secure Electronic Voting System for College Election
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 SEVS (Secure Electronic Voting System) is a Django-based web application designed to manage and conduct secure college elections. The system ensures transparency, integrity, and confidentiality throughout the voting process. It employs state-of-the-art cryptographic techniques and features a hierarchical role-based structure for managing duties across various election participants.
