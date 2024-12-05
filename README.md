@@ -98,9 +98,7 @@ Contributions are welcome! Please follow these steps:
    ```
 5. Open a pull request on GitHub.
 
-## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
